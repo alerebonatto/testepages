@@ -103,9 +103,11 @@
   const btn = document.getElementById("btnQr");
   const overlay = document.getElementById("overlay");
   const close = document.getElementById("close");
+  const copyBtn = document.getElementById("copyPix");
+  const pixKey = document.getElementById("pixKey");
 
   btn.addEventListener("click", (e) => {
-    e.preventDefault(); // ⬅ impede navegação do <a>
+    e.preventDefault();
     overlay.style.display = "flex";
   });
 
@@ -118,6 +120,7 @@
       overlay.style.display = "none";
     }
   });
+
   copyBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(pixKey.value)
       .then(() => {
