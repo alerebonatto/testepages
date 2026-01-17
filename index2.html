@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="color-scheme" content="dark light">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>links - crisjola</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div id="overlay">
+  <div class="modal">
+    <span id="close">&times;</span>
+    <img src="./img/qr.png" alt="QR Code"><br>
+    <input 
+      type="text" 
+      id="pixKey" 
+      value="84a76a99-3286-4f00-8cf3-23a0ac02967e"
+      readonly
+    >
+
+    <button id="copyPix">Copiar chave PIX</button>
+  </div>
+</div>
+    <div class="container">
+        <div class="cover"><button id="shareBtn" class="share-btn" aria-label="Compartilhar">
+    <i class="fa-solid fa-share-nodes"></i>
+  </button></div>
+  <script>
+  const shareBtn = document.getElementById("shareBtn");
+
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Meus Links - crisjola",
+          text: "Aqui você encontra todos os meus links! 👇",
+          url: window.location.href
+        });
+      } catch (error) {
+        console.log("Compartilhamento cancelado");
+      }
+    } else {
+      alert("Compartilhamento não suportado neste navegador 😕");
+    }
+  });
+</script>
+
+        <div class="container-image">
+            <div class="img"></div>
+            
+        
+        </div>
+<header>
+  <h1>crisjola🪿</h1>
+  <p class="bio">
+    streamer
+  
+    singer
+
+    <span class="final">jesus follower</span>
+  </p>
+</header>
+        <div class="container-botao">
+            <a class="botoes" href="https://www.instagram.com/crissntsz?igsh=MW1mMDVoMzVrbzJoNw%3D%3D&utm_source=qr
+">
+                <i class="fa-brands fa-instagram"></i>
+                <p>INSTAGRAM</p>
+         
+            </a>
+            
+            <a class="botoes" href="#" id="btnQr">
+                <i class="fa-brands fa-pix"></i>
+                <p>PIX</p>
+            </a>
+            <a class="botoes" href="https://wise.com/pay/me/cristianes1837">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <p>WISE</p>
+            </a>
+           
+            
+            <a class="botoes" href="https://www.amazon.com.br/hz/wishlist/ls/3V7DJXM4MJL69?ref_=list_d_wl_ys_list_2">
+                <i class="fa-brands fa-amazon"></i>
+                <p>MY AMAZON WISH LIST</p>
+            </a>
+
+            <a class="botoes" href="https://www.tiktok.com/coin?rc=4P675L9X">
+                <i class="fa-brands fa-tiktok"></i>
+                <p>RECARREGUE COM 25% OFF</p>
+            </a>
+
+            <a class="botoes" href="https://livepix.gg/vaquinha/pc-para-as-lives">
+                <i class="fa-brands fa-pix"></i>
+                <p style="letter-spacing:-0.03em;">AJUDE A COMPRAR O PC PARA A LIVE</p>
+                </a>
+    </div>
+        
+    </div>
+    <script>
+  const btn = document.getElementById("btnQr");
+  const overlay = document.getElementById("overlay");
+  const close = document.getElementById("close");
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // ⬅ impede navegação do <a>
+    overlay.style.display = "flex";
+  });
+
+  close.addEventListener("click", () => {
+    overlay.style.display = "none";
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.style.display = "none";
+    }
+  });
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(pixKey.value)
+      .then(() => {
+        copyBtn.innerText = "Chave copiada ✔";
+        setTimeout(() => {
+          copyBtn.innerText = "Copiar chave PIX";
+        }, 2000);
+      })
+      .catch(() => {
+        alert("Não foi possível copiar a chave");
+      });
+  });
+</script>
+
+</body>
+</html>
