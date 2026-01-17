@@ -237,24 +237,41 @@ a {
 }
 /* Overlay escuro */
 #overlay {
+    z-index: 9999;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
   justify-content: center;
-  z-index: 999;
+  align-items: center;
+
+  opacity: 0;            /* inicial invisível */
+  pointer-events: none;  /* impede clique quando invisível */
+  transition: opacity 0.3s ease; /* transição suave */
+}
+
+#overlay.show {
+  opacity: 1;            /* visível */
+  pointer-events: auto;  /* agora pode clicar */
 }
 
 /* Caixa central */
 .modal {
   background: #fff;
   padding: 20px;
-  border-radius: 10px;
-  position: relative;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  transform: scale(0.9);           /* inicia um pouco menor */
+  transition: transform 0.3s ease; /* animação suave */
+}
+
+#overlay.show .modal {
+  transform: scale(1); /* cresce suavemente */
 }
 
 /* QR Code */
@@ -276,10 +293,23 @@ a {
   margin: 10px 0;
   text-align: center;
   font-size: 14px;
+  background-color: #f5f7fa;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  color: #333;
 }
 
 #copyPix {
-  width: 100%;
-  padding: 10px;
+  background-color: #00c853; /* verde PIX */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
+}
+#copyPix:hover {
+  background-color: #00b248;
 }

@@ -100,38 +100,51 @@
         
     </div>
     <script>
-  const btn = document.getElementById("btnQr");
-  const overlay = document.getElementById("overlay");
-  const close = document.getElementById("close");
-  const copyBtn = document.getElementById("copyPix");
-  const pixKey = document.getElementById("pixKey");
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btnQr");
+    const overlay = document.getElementById("overlay");
+    const close = document.getElementById("close");
+    const copyBtn = document.getElementById("copyPix");
+    const pixKey = document.getElementById("pixKey");
 
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    overlay.style.display = "flex";
-  });
+    // abrir modal
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); // evita navegar se for <a>
+      overlay.classList.add("show");
+    });
 
-  close.addEventListener("click", () => {
-    overlay.style.display = "none";
-  });
+    // fechar modal pelo "x"
+    close.addEventListener("click", () => {
+      overlay.classList.remove("show");
+    });
 
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      overlay.style.display = "none";
-    }
-  });
+    // fechar modal clicando fora da modal
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove("show");
+      }
+    });
 
-  copyBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(pixKey.value)
-      .then(() => {
-        copyBtn.innerText = "Chave copiada ✔";
-        setTimeout(() => {
-          copyBtn.innerText = "Copiar chave PIX";
-        }, 2000);
-      })
-      .catch(() => {
-        alert("Não foi possível copiar a chave");
-      });
+    // copiar chave PIX
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(pixKey.value)
+        .then(() => {
+          copyBtn.innerText = "Chave copiada ✔";
+          setTimeout(() => {
+            copyBtn.innerText = "Copiar chave PIX";
+          }, 2000);
+        })
+        .catch(() => {
+          alert("Não foi possível copiar a chave");
+        });
+    });
+
+    // opcional: fechar modal com ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        overlay.classList.remove("show");
+      }
+    });
   });
 </script>
 
